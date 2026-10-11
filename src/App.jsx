@@ -412,7 +412,7 @@ function App() {
   return (
     <main className="app-shell">
       <header className="topbar">
-        <a className="brand" href="#" aria-label="HOLO LAB inicio">HOLO<span>//</span>LAB</a>
+        <a className="brand" href="#" aria-label="HOLO LAB inicio" data-holo-label="HOLO//LAB">HOLO<span>//</span>LAB</a>
         <div className="topbar-divider" />
         <button className="toolbar-button open-button" onClick={openPicker}>
           <Icon name="folder" size={18} /> <span>Abrir imagen</span>

@@ -23,8 +23,32 @@ button { color: inherit; }
 button:focus-visible, input:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
 .app-shell { min-height: 100vh; display: flex; flex-direction: column; background: var(--bg); }
 .topbar { height: 60px; flex: 0 0 60px; display: flex; align-items: center; gap: 12px; padding: 0 20px; border-bottom: 1px solid var(--line); background: #0e0d15; }
-.brand { color: #eef0fa; text-decoration: none; font-weight: 600; letter-spacing: -1px; font-size: 20px; white-space: nowrap; }
+.brand { position: relative; display: inline-block; color: #eef0fa; text-decoration: none; font-weight: 800; letter-spacing: -1px; font-size: 20px; white-space: nowrap; }
 .brand span { color: var(--cyan); }
+.brand::after {
+  content: attr(data-holo-label);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background: linear-gradient(105deg, transparent 35%, #44edff 43%, #b44cff 48%, #fff 51%, #ff55c9 55%, #7dffe0 60%, transparent 68%);
+  background-size: 300% 100%;
+  background-position: 180% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  opacity: 0;
+  animation: brand-holo-sweep 60s linear infinite;
+}
+@keyframes brand-holo-sweep {
+  0% { background-position: 180% 0; opacity: 1; }
+  4% { background-position: -80% 0; opacity: 1; }
+  5% { background-position: -80% 0; opacity: 0; }
+  100% { background-position: -80% 0; opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .brand::after { animation: none; }
+}
 .topbar-divider { height: 24px; width: 1px; background: #292631; margin: 0 7px 0 10px; }
 .toolbar-button, .export-button { border: 0; border-radius: 4px; height: 40px; display: inline-flex; align-items: center; gap: 9px; padding: 0 13px; background: transparent; font-size: 15px; cursor: pointer; white-space: nowrap; }
 .toolbar-button:hover:not(:disabled) { background: #211f29; }
