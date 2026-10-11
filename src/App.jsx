@@ -418,10 +418,10 @@ function App() {
           <Icon name="folder" size={18} /> <span>Abrir imagen</span>
         </button>
         <input ref={fileInput} className="visually-hidden" type="file" accept="image/png,image/jpeg,image/webp,.png,.jpg,.jpeg,.webp" onChange={(event) => { loadImage(event.target.files?.[0]); event.target.value = '' }} />
-        <button className="toolbar-button" disabled={!image || history.length === 0} onClick={undo}>
+        <button className="toolbar-button undo-button" aria-label="Deshacer" disabled={!image || history.length === 0} onClick={undo}>
           <Icon name="undo" size={17} /><span>Deshacer</span>
         </button>
-        <button className="toolbar-button" disabled={!image} onClick={reset}>
+        <button className="toolbar-button reset-button" aria-label="Restablecer" disabled={!image} onClick={reset}>
           <Icon name="reset" size={17} /><span>Restablecer</span>
         </button>
         <div className="file-meta">
